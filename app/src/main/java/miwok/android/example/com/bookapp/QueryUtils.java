@@ -127,15 +127,15 @@ public final class QueryUtils {
 
                 JSONObject volumeInfo = currentBook.getJSONObject("volumeInfo");
 
-                String title = volumeInfo.getString("title");
+                String title = volumeInfo.optString("title");
 
                 JSONArray authorsArray = volumeInfo.getJSONArray("authors");
 
-                String author = authorsArray.getString(0);
+                String author = authorsArray.optString(0);
 
                 int pages = volumeInfo.optInt("pageCount");
 
-                String url = volumeInfo.getString("infoLink");
+                String url = volumeInfo.optString("infoLink");
 
                 JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
                 String cover = imageLinks.optString("smallThumbnail");
