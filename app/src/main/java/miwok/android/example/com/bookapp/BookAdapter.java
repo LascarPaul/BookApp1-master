@@ -37,12 +37,13 @@ public class BookAdapter extends ArrayAdapter<Book> {
         titleView.setText(currentBook.getMtitle());
 
         TextView pagesView = (TextView) listItemView.findViewById(R.id.book_pages);
-        pagesView.setText(String.valueOf(currentBook.getMnumberOfPages()));
+        pagesView.setText(String.valueOf(currentBook.getMnumberOfPages()) + " pg." );
 
         TextView authorView = (TextView) listItemView.findViewById(R.id.book_author);
         authorView.setText(currentBook.getmAuthor());
 
         ImageView coverImage = (ImageView) listItemView.findViewById(R.id.cover_image);
+        coverImage.se
 
         return listItemView;
 }
