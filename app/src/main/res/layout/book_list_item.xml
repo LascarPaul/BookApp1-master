@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="130dp"
+        android:id="@+id/cover_image"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_toRightOf="@id/cover_image">
+
+        <RatingBar
+            android:numStars="5"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/book_title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            tools:text="title" />
+
+        <TextView
+            android:ellipsize="end"
+            android:layout_centerInParent="true"
+            android:textSize="12sp"
+            android:id="@+id/book_author"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/book_title"
+            tools:text="author" />
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_centerInParent="true"
+            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:id="@+id/book_pages"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            tools:text="321" />
+
+    </RelativeLayout>
+</RelativeLayout>
