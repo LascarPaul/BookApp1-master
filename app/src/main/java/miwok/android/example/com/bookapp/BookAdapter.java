@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import org.w3c.dom.Text;
 
 import java.util.List;
@@ -43,7 +45,11 @@ public class BookAdapter extends ArrayAdapter<Book> {
         authorView.setText(currentBook.getmAuthor());
 
         ImageView coverImage = (ImageView) listItemView.findViewById(R.id.cover_image);
-        coverImage.se
+
+        if (currentBook.getmBookCover() != null && !currentBook.getmBookCover().isEmpty()) {
+            Picasso.with(getContext()).load(currentBook.getmBookCover()).into(coverImage);
+        }
+
 
         return listItemView;
 }
