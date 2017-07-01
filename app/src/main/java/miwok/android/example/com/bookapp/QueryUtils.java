@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -119,30 +120,41 @@ public final class QueryUtils {
 
             JSONObject baseJsonResponse = new JSONObject(bookJson);
 
-            JSONArray bookArray = baseJsonResponse.getJSONArray("items");
+            JSONArray bookArray;
 
-            for (int i = 0; i < bookArray.length(); i++) {
+            if (baseJsonResponse.has("items")) {
 
-                JSONObject currentBook = bookArray.getJSONObject(i);
+                bookArray = baseJsonResponse.getJSONArray("items");
 
-                JSONObject volumeInfo = currentBook.getJSONObject("volumeInfo");
+                for (int i = 0; i < bookArray.length(); i++) {
 
-                String title = volumeInfo.optString("title");
+                    JSONObject currentBook = bookArray.getJSONObject(i);
 
-                JSONArray authorsArray = volumeInfo.getJSONArray("authors");
+                    JSONObject volumeInfo = currentBook.getJSONObject("volumeInfo");
 
-                String author = authorsArray.optString(0);
+                    String title = volumeInfo.optString("title");
 
-                int pages = volumeInfo.optInt("pageCount");
+                    JSONArray authorsArray = volumeInfo.getJSONArray("authors");
 
-                String url = volumeInfo.optString("infoLink");
+                    String author;
 
-                JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
-                String cover = imageLinks.optString("smallThumbnail");
+                    if (volumeInfo.has("authors")) {
+                        author = authorsArray.optString(0);
+                    } else {
+                        author = "N/A";
 
-                Book book = new Book(title, author, pages, url, cover);
+                    }
+                    int pages = volumeInfo.optInt("pageCount");
 
-                books.add(book);
+                    String url = volumeInfo.optString("infoLink");
+
+                    JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
+                    String cover = imageLinks.optString("smallThumbnail");
+
+                    Book book = new Book(title, author, pages, url, cover);
+
+                    books.add(book);
+                }
             }
 
         } catch (JSONException e) {
