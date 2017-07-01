@@ -40,7 +40,7 @@ public class Book {
         return mUrl;
     }
 
-    public String getmBookCover() {
+    public String getmBookCoverUrl() {
         return mBookCover;
     }
 }

@@ -28,17 +28,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final String BOOK_REQUEST_URL = "https://www.googleapis.com/books/v1/volumes?maxResults=10&orderBy=newest&q=";
 
     private static final int BOOK_LOADER_ID = 1;
-
-    private BookAdapter mBookAdapter;
-
-    private SearchView searchView;
-
-    private ListView booksListView;
-
-    private String mQuery;
-
     TextView mEmptyStateTextView;
-
+    private BookAdapter mBookAdapter;
+    private SearchView searchView;
+    private ListView booksListView;
+    private String mQuery;
     private ProgressBar mloadingIndicator;
 
 
@@ -67,12 +61,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
 
-
         mloadingIndicator = (ProgressBar) findViewById(R.id.loading_indicator);
 
         mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
         booksListView.setEmptyView(mEmptyStateTextView);
-
 
         if (isConnected()) {
             LoaderManager loaderManager = getLoaderManager();

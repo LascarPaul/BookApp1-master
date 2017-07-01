@@ -1,6 +1,7 @@
 package miwok.android.example.com.bookapp;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -25,8 +24,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        // Check if there is an existing list item view (called convertView) that we can reuse,
-        // otherwise, if convertView is null, then inflate a new list item layout.
+
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
@@ -46,10 +44,10 @@ public class BookAdapter extends ArrayAdapter<Book> {
 
         ImageView coverImage = (ImageView) listItemView.findViewById(R.id.cover_image);
 
-        if (currentBook.getmBookCover() != null && !currentBook.getmBookCover().isEmpty()) {
-            Picasso.with(getContext()).load(currentBook.getmBookCover()).into(coverImage);
+        if (currentBook.getmBookCoverUrl() != null && !currentBook.getmBookCoverUrl().isEmpty()) {
+            Log.v("IMAGE", "IMAGE" + currentBook.getmBookCoverUrl());
+            Picasso.with(getContext()).load(currentBook.getmBookCoverUrl()).into(coverImage);
         }
-
 
         return listItemView;
 }

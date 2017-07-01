@@ -3,57 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="130dp"
         android:id="@+id/cover_image"
+        android:layout_width="@dimen/image_height"
+        android:layout_height="@dimen/image_height"
         android:scaleType="centerCrop" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="@dimen/image_height"
         android:layout_toRightOf="@id/cover_image">
 
         <RatingBar
-            android:numStars="5"
             android:layout_width="match_parent"
-            android:layout_height="40dp" />
+            android:layout_height="@dimen/small_height"
+            android:numStars="5" />
 
         <TextView
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:id="@+id/book_title"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/small_height"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold"
             tools:text="title" />
 
         <TextView
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:layout_centerInParent="true"
-            android:textSize="12sp"
             android:id="@+id/book_author"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/small_height"
+            android:layout_alignParentBottom="true"
             android:layout_below="@id/book_title"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textSize="@dimen/author_size"
             tools:text="author" />
 
         <TextView
-            android:gravity="center"
-            android:layout_alignParentBottom="true"
-            android:layout_marginRight="10dp"
-            android:layout_centerInParent="true"
-            android:layout_height="40dp"
-            android:layout_width="wrap_content"
             android:id="@+id/book_pages"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/small_height"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/author_size"
+            android:gravity="center"
             tools:text="321 pg." />
 
     </RelativeLayout>

@@ -138,7 +138,7 @@ public final class QueryUtils {
                 String url = volumeInfo.getString("infoLink");
 
                 JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
-                String cover = imageLinks.optString("smallThumbNail");
+                String cover = imageLinks.optString("smallThumbnail");
 
                 Book book = new Book(title, author, pages, url, cover);
 
