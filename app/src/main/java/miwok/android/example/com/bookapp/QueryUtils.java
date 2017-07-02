@@ -134,11 +134,9 @@ public final class QueryUtils {
 
                     String title = volumeInfo.optString("title");
 
-                    JSONArray authorsArray = volumeInfo.getJSONArray("authors");
-
-                    String author;
-
+                    String author = "N/A";
                     if (volumeInfo.has("authors")) {
+                        JSONArray authorsArray = volumeInfo.getJSONArray("authors");
                         author = authorsArray.optString(0);
                     } else {
                         author = "N/A";
